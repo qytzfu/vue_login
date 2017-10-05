@@ -28,7 +28,7 @@
             <td>blue</td>
             <td>50</td>
             <td>
-                <button class="btn btn-primary btn-sm">删除</button>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#layer">删除</button>
             </td>
         </tr>
         <tr class="text-center">
@@ -50,6 +50,23 @@
             </td>
         </tr>
       </table>
+      <!-- 弹出框 -->
+      <div role="dialog" class="modal fade" id="layer">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+              <h4 class="modal-title">确定要删除么</h4>
+            </div>
+            <div class="modal-body">
+              <button data-dismiss="modal" class="btn btn-primary btn-sm">否</button>
+              <button data-dismiss="modal" class="btn btn-danger btn-sm">是</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 
