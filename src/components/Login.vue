@@ -11,7 +11,7 @@
           </div>
           <div class="form-group">
               <input type="button" value="添加" class="btn btn-primary" v-on:click="add()">
-              <input type="button" value="重置" class="btn btn-danger">
+              <input type="reset" value="重置" class="btn btn-danger">
           </div>
       </form>
       <hr>
@@ -32,12 +32,12 @@
             <td>{{item.name}}</td>
             <td>{{item.age}}</td>
             <td>
-                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#layer">删除</button>
+                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#layer" v-on:click="nowIndex=index">删除</button>
             </td>
           </tr>
           <tr v-show="profile.length!=0">
               <td colspan="4" class="text-right">
-                  <button class="btn btn-danger btn-sm">删除全部</button>
+                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#layer" v-on:click="nowIndex=-5">删除全部</button>
               </td>
           </tr>
           <tr v-show="profile.length==0">
@@ -59,7 +59,7 @@
             </div>
             <div class="modal-body">
               <button data-dismiss="modal" class="btn btn-primary btn-sm">否</button>
-              <button data-dismiss="modal" class="btn btn-danger btn-sm">是</button>
+              <button data-dismiss="modal" class="btn btn-danger btn-sm"  v-on:click="deleteLine(nowIndex)">是</button>
             </div>
           </div>
         </div>
@@ -78,6 +78,7 @@ export default {
       profile:[],
       username:'',
       age:'',
+      nowIndex:-10,
       msg: 'Welcome to Your Vue.js App'
     }
   },
@@ -93,6 +94,14 @@ export default {
       this.age='';
       // alert(this.profile)
       console.log(this.profile);
+    },
+    deleteLine:function(n){
+      // 删除全部设置的值
+      if(n==-5){
+        this.profile=[];
+      }else{
+        this.profile.splice(n,1);
+      }
     }
   }
 }
